@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Data</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #4CAF50;
+            padding: 12px 20px;
+            font-family: Arial, sans-serif;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: bold;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover {
+            color: #ffd700;
+        }
+
+        .page-title {
+            font-family: Arial, sans-serif;
+            font-size: 28px;
+            font-weight: bold;
+            text-align: center;
+            color: #333;
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .page-title::after {
+            content: "";
+            display: block;
+            width: 80px;
+            height: 3px;
+            background-color: #4CAF50;
+            margin: 8px auto 0;
+            border-radius: 2px;
+        }
+
+        .data-form {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .form-table {
+            background: #f9f9f9;
+            padding: 20px 50px;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+        }
+
+        .form-label {
+            font-weight: bold;
+            color: #333;
+            padding-right: 15px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 8px 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            outline: none;
+            transition: border 0.3s;
+        }
+
+        .form-input:focus {
+            border: 1px solid #4CAF50;
+            box-shadow: 0 0 4px rgba(76, 175, 80, 0.4);
+        }
+
+        .form-submit {
+            text-align: center;
+            padding-top: 10px;
+        }
+
+        .btn-submit {
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn-submit:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <a href="/">
+            <div class="logo">Library Management</div>
+        </a>
+        <div class="nav-links">
+            <a href="/" class="nav-link">Home</a>
+            <a href="/add_data" class="nav-link">Add Data</a>
+        </div>
+    </nav>
+
+    <h1 class="page-title">Edit Book Information</h1>
+
+    <form action="/edit_data/<%= book.id%>" method="post" class="data-form">
+        <table class="form-table">
+            <tr>
+                <td><label class="form-label">Id:</label></td>
+                <td><input type="number" name="id" class="form-input" placeholder="Enter Id" value="<%= book.id%>"
+                        disabled></td>
+            </tr>
+            <tr>
+                <td><label class="form-label">Book Name:</label></td>
+                <td><input type="text" name="name" class="form-input" placeholder="Enter Book Name"
+                        value="<%= book.name%>" required></td>
+            </tr>
+            <tr>
+                <td><label class="form-label">Book Description:</label></td>
+                <td>
+                    <textarea name="description" class="form-input" placeholder="Enter Book Description" rows="5"
+                        cols="40" required><%= book.description %></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td><label class="form-label">Author Name:</label></td>
+                <td><input type="text" name="author" class="form-input" placeholder="Enter Author Name"
+                        value="<%= book.author%>" required></td>
+            </tr>
+            <tr>
+                <td colspan="2" class="form-submit">
+                    <button type="submit" class="btn-submit">Update Data</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+
+
+
+</body>
+
+</html>
