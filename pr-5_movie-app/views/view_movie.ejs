@@ -21,29 +21,23 @@
     }
 
     body {
-      background: linear-gradient(135deg, #1a1a1a, #0d0d0d);
       font-family: 'Montserrat', sans-serif;
       color: var(--pvr-light);
       min-height: 100vh;
     }
 
     .pvr-navbar {
-      background-color: #1a1a1a;
       padding: 0.6rem 1rem;
     }
 
     .pvr-logo {
-      color: gold !important;
+      color: rgb(0, 0, 0) !important;
       font-weight: bold;
       font-size: 1.5rem;
     }
 
     .nav-link {
-      color: #fff !important;
-    }
-
-    .nav-link:hover {
-      color: gold !important;
+      color: #000000 !important;
     }
 
     .movie-detail-container {
@@ -52,7 +46,6 @@
       display: grid;
       grid-template-columns: 1fr 1.5fr;
       gap: 2rem;
-      background: linear-gradient(145deg, #1a1a1a, #141414);
       border-radius: 12px;
       overflow: hidden;
       border: 1px solid rgba(212, 175, 55, 0.1);
@@ -72,14 +65,14 @@
     .movie-title {
       font-family: 'Oswald', sans-serif;
       font-size: 2rem;
-      color: var(--pvr-light);
+      color: black;
       margin-bottom: 1rem;
       position: relative;
     }
 
     .movie-desc {
       font-size: 1rem;
-      color: #bbb;
+      color: #000000!important;
       margin: 1rem 0 1.5rem;
       line-height: 1.6;
     }
@@ -87,7 +80,6 @@
     .movie-meta {
       display: flex;
       justify-content: space-between;
-      background: rgba(35, 35, 35, 0.7);
       padding: 1rem;
       border-radius: 8px;
       margin-bottom: 1.5rem;
@@ -102,10 +94,11 @@
       font-size: 0.8rem;
       text-transform: uppercase;
       letter-spacing: 1px;
-      color: var(--pvr-gold);
+      color: rgb(0, 0, 0);
     }
 
     .meta-value {
+      color: #000;
       font-weight: 600;
     }
 
@@ -133,20 +126,20 @@
       font-weight: 600;
       text-transform: uppercase;
       font-size: 0.9rem;
-      border: none;
+      border: none!important;
       transition: all 0.3s ease;
     }
 
     .btn-book {
-      background: linear-gradient(135deg, var(--pvr-gold), #b8860b);
-      color: #000;
-      border: none;
+      background-color: #000;
+      color: #ffffff;
+      border: none!important;
     }
 
     .btn-back {
-      background: linear-gradient(135deg, var(--pvr-view), #16abbf);
-      color: white;
-      border: none;
+      background-color: #000;
+      color: rgb(255, 255, 255)!important;
+      border: none!important;
     }
 
     @media (max-width: 768px) {
@@ -169,7 +162,7 @@
 
   <nav class="navbar navbar-expand-lg pvr-navbar">
     <div class="container-fluid">
-      <a class="navbar-brand pvr-logo" href="/">PVR Cinemas</a>
+      <a class="navbar-brand pvr-logo" href="/">Bookmyshow</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarPVR">
         <span class="navbar-toggler-icon"></span>
       </button>

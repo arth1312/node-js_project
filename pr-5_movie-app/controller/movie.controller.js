@@ -4,12 +4,26 @@ const fs = require("fs");
 
 exports.homepage = async (req, res) => {
     try {
-        const movies = await Movie.find();
-        res.render("index", { movies });
+        const searchQuery = req.query.q || "";
+        let movies;
+
+        if (searchQuery) {
+            movies = await Movie.find({
+                $or: [
+                    { name: { $regex: searchQuery, $options: "i" } },
+                    { category: { $regex: searchQuery, $options: "i" } },
+                    { language: { $regex: searchQuery, $options: "i" } }
+                ]
+            });
+        } else {
+            movies = await Movie.find();
+        }
+
+        res.render("index", { movies, searchQuery });
     } catch (error) {
-        res.status(500).send("Error fetching products");
+        console.log(error);
     }
-}
+};
 
 exports.addForm = async (req, res) => {
     res.render('add_movie')
@@ -58,17 +72,17 @@ exports.deletemovie = async (req, res) => {
 };
 
 exports.viewSingleMovie = async (req, res) => {
-  try {
-    const id = req.params.id; 
-    const movie = await Movie.findById(id);
+    try {
+        const id = req.params.id;
+        const movie = await Movie.findById(id);
 
-    if (!movie) {
-      return res.status(404).send("Movie not found");
+        if (!movie) {
+            return res.status(404).send("Movie not found");
+        }
+
+        res.render("view_movie", { movie });
+    } catch (err) {
+        console.error(err);
+        res.status(500).send("Server Error");
     }
-
-    res.render("view_movie", { movie }); 
-  } catch (err) {
-    console.error(err);
-    res.status(500).send("Server Error");
-  }
 };
